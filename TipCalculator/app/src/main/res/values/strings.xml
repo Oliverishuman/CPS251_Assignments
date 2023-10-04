@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">TipCalculator</string>
-    <string name="calculateTip_string">Calculate Tip</string>
+    <string name="calculateTip_string">Calculate</string>
     <string name="billTotal_string">Enter bill total</string>
+    <string name="noValueError">YOU MUST ENTER A BILL AMOUNT</string>
+    <string name="tipsHint">Tip amounts will display here</string>
 </resources>
