@@ -4,11 +4,15 @@ plugins {
 }
 
 android {
-    namespace = "com.olmcmillen.addnamesavedata"
+    namespace = "com.olmcmillen.addnamesavedata1"
     compileSdk = 33
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
-        applicationId = "com.olmcmillen.addnamesavedata"
+        applicationId = "com.olmcmillen.addnamesavedata1"
         minSdk = 26
         targetSdk = 33
         versionCode = 1
@@ -37,6 +41,7 @@ android {
 
 dependencies {
 
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.6.0")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")

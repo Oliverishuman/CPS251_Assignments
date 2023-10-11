@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AddNameSaveData"
+rootProject.name = "AddNameSaveData1"
 include(":app")
  
