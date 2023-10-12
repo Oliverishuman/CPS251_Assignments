@@ -5,5 +5,5 @@
     <string name="enterNameText">Enter name</string>
     <string name="addNameButtonText">Add Name</string>
     <string name="namesViewText">No names to display</string>
-    <string name="no_value_string">AHHHHHHHH</string>
+    <string name="noNameEntered">No Name Entered</string>
 </resources>

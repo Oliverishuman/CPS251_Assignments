@@ -20,7 +20,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [MainFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MainFragment() : Fragment(), Parcelable {
+class MainFragment() : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -30,6 +30,10 @@ class MainFragment() : Fragment(), Parcelable {
 
     private lateinit var viewModel: MainViewModel
 
+    companion object {
+        fun newInstance() = MainFragment()
+    }
+
     constructor(parcel: Parcel) : this() {
         param1 = parcel.readString()
         param2 = parcel.readString()
@@ -38,9 +42,7 @@ class MainFragment() : Fragment(), Parcelable {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-            viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+
         }
     }
 
@@ -59,52 +61,22 @@ class MainFragment() : Fragment(), Parcelable {
         _binding = null
     }
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(param1)
-        parcel.writeString(param2)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<MainFragment> {
-        override fun createFromParcel(parcel: Parcel): MainFragment {
-            return MainFragment(parcel)
-        }
-
-        override fun newArray(size: Int): Array<MainFragment?> {
-            return arrayOfNulls(size)
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+
+        binding.namesView.text = viewModel.getNames()
 
         binding.addNameButton.setOnClickListener {
-//            viewModel.setNames(binding.enterName.text.toString())
-            this.binding.namesView.text = binding.enterName.text
+            if (binding.enterName.text.isNotEmpty()){
+                viewModel.setNames(binding.enterName.text.toString())
+                binding.namesView.text = viewModel.getNames()
+//                this.binding.namesView.text = this.binding.namesView.text.toString() + "\n" + binding.enterName.text.toString()
+            }
+            else {
+                this.binding.namesView.text = "No Name Entered"
+            }
+        }
     }
 
-/*
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MainFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MainFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-*/
-} }
+}

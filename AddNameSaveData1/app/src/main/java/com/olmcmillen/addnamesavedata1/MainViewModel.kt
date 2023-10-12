@@ -1,5 +1,6 @@
 package com.olmcmillen.addnamesavedata1
 import androidx.lifecycle.ViewModel
+
 class MainViewModel : ViewModel() {
 
     private var enterName = ""
@@ -8,7 +9,7 @@ class MainViewModel : ViewModel() {
     fun setNames (value: String) {
         this.enterName = value
 
-        namesView += ("\n" + enterName)
+        namesView += (enterName + "\n")
     }
 
     fun getNames(): String{
