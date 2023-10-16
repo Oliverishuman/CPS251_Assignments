@@ -17,7 +17,6 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-
     private lateinit var viewModel: MainViewModel
 
     companion object {
@@ -37,7 +36,7 @@ class MainFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_main, container, false)
-
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -49,7 +48,6 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         binding.namesView.text = viewModel.getNames()
 
