@@ -1,44 +1,37 @@
 package com.olmcmillen.addnamesavedata2
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel() {
 
-//    private var enterName = ""
-//    private var namesView = ""
+    private var nameEntered = ""
+
 
     var enterName: MutableLiveData<String> = MutableLiveData()
     var namesView: MutableLiveData<String> = MutableLiveData()
+    //val enteredNames = mutableListOf<String>()
+    var savedNames = ""
+    val enteredNames: MutableLiveData<String> = MutableLiveData()
 
     fun addNames() {
-        val enteredNames = mutableListOf<String>()
 
-        enterName.let {
-            val enteredNames = mutableListOf<String>()
+        if (!enterName.value.equals("")) {
+            savedNames += enterName.value.toString() + "\n"
 
-            if (!it.value.equals("")) {
-                // Append the entered name to the list
-                enteredNames.add(enterName.value.toString())
-            }
+            namesView.value = savedNames
 
-            // Update the namesView to display the list of names or the error message
-            if (enteredNames.isNotEmpty()) {
-                namesView.value = enteredNames.joinToString("\n")
-            } else {
-                // If no name is entered, show an error message
-                namesView.value = "No Name Entered"
-            }
-//
-//            if (!it.value.equals("")) {
-//                enteredNames.add(enterName.value.toString() + "\n")
-//
-//                namesView.value += enteredNames.toString()
-//
-//            } else {
-//                namesView.value = "No Names Entered"
-//            }
+            //enterName.value(enterName.value.toString())
+            //enteredNames.add(enterName.value.toString())
+            //enteredName
+            //namesView.value = enteredNames.toString()
+        } else {
+            namesView.value = "No Names Entered"
         }
+
     }
+
+
 //
 //    fun setNames (value: String) {
 //        this.enterName = value
