@@ -23,8 +23,6 @@ class MainFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
     lateinit var binding: FragmentMainBinding
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]

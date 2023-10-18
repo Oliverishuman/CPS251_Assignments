@@ -5,26 +5,16 @@ import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel() {
 
-    private var nameEntered = ""
-
-
+    private var savedNames = ""
     var enterName: MutableLiveData<String> = MutableLiveData()
     var namesView: MutableLiveData<String> = MutableLiveData()
-    //val enteredNames = mutableListOf<String>()
-    var savedNames = ""
-    val enteredNames: MutableLiveData<String> = MutableLiveData()
 
     fun addNames() {
 
         if (!enterName.value.equals("")) {
             savedNames += enterName.value.toString() + "\n"
-
             namesView.value = savedNames
 
-            //enterName.value(enterName.value.toString())
-            //enteredNames.add(enterName.value.toString())
-            //enteredName
-            //namesView.value = enteredNames.toString()
         } else {
             namesView.value = "No Names Entered"
         }
