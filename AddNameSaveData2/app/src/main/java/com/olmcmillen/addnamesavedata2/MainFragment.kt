@@ -10,18 +10,18 @@ import androidx.lifecycle.ViewModelProvider
 import com.olmcmillen.addnamesavedata2.databinding.FragmentMainBinding
 import com.olmcmillen.addnamesavedata2.BR.myViewModel
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MainFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+///**
+// * A simple [Fragment] subclass.
+// * Use the [MainFragment.newInstance] factory method to
+// * create an instance of this fragment.
+// */
 class MainFragment : Fragment() {
 
 //    private var _binding: FragmentMainBinding? = null
 //    private val binding get() = _binding!!
 
     private lateinit var viewModel: MainViewModel
-    lateinit var binding: FragmentMainBinding
+    private lateinit var binding: FragmentMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
