@@ -2,8 +2,5 @@
     <string name="app_name">AddNameSaveData1</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="enterNameText">Enter name</string>
-    <string name="addNameButtonText">Add Name</string>
-    <string name="namesViewText">No names to display</string>
-    <string name="noNameEntered">No Name Entered</string>
+    <string name="namesViewText">Log to go here</string>
 </resources>

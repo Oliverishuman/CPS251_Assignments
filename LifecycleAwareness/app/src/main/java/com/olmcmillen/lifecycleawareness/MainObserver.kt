@@ -1,33 +1,39 @@
 package com.olmcmillen.lifecycleawareness
 
+import android.nfc.Tag
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import java.text.SimpleDateFormat
+import java.time.LocalTime
 
 class MainObserver: DefaultLifecycleObserver {
-    private val TAG = "DemoObserver"
+
+    var ts = LocalTime.now()
+
+    private val TAG = " was fired on " + ts
     var mv = MainViewModel
 
     override fun onCreate(owner: LifecycleOwner) {
-        mv.setText("onCreate")
+        mv.setText("\nonCreate" + TAG)
     }
 
     override fun onResume(owner: LifecycleOwner) {
-        mv.setText("onResume")
+        mv.setText("onResume" + TAG + "\n*************")
     }
 
     override fun onPause(owner: LifecycleOwner) {
-        mv.setText("onPause")
+        mv.setText("onPause" + TAG + "\n*************")
     }
 
     override fun onStart(owner: LifecycleOwner) {
-        mv.setText("onStart")
+        mv.setText("onStart" + TAG)
     }
 
     override fun onStop(owner: LifecycleOwner) {
-        mv.setText("onStop")
+        mv.setText("onStop" + TAG)
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
-        mv.setText("onDestroy")
+        mv.setText("onDestroy" + TAG + "\n*************")
     }
 }

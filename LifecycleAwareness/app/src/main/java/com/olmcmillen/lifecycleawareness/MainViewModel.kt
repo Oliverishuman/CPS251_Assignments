@@ -8,9 +8,8 @@ class MainViewModel : ViewModel() {
         private var textToWatch: MutableLiveData<String> = MutableLiveData()
 
         fun setText (value: String) {
-            textToWatch.value += value + "\n"
+                textToWatch.value += value + "\n"
         }
-
     }
 
     fun getText(): MutableLiveData<String>{

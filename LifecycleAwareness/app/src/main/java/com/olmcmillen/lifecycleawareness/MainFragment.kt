@@ -21,8 +21,8 @@ class MainFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         lifecycle.addObserver(MainObserver())
-
     }
 
     override fun onCreateView(
@@ -30,8 +30,7 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_main, container, false)
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -45,7 +44,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val resultObserver = Observer<String> {
-                result -> binding.logTextView.text = result.toString()
+                result -> binding.logTextView.text = result
         }
         viewModel.getText().observe(viewLifecycleOwner, resultObserver)
     }
