@@ -5,14 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.olmcmillen.lifecycleawareness.databinding.FragmentMainBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MainFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
@@ -25,9 +21,8 @@ class MainFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
+        lifecycle.addObserver(MainObserver())
 
-        }
     }
 
     override fun onCreateView(
@@ -49,17 +44,10 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.namesView.text = viewModel.getNames()
-
-        binding.addNameButton.setOnClickListener {
-            if (binding.enterName.text.isNotEmpty()){
-                viewModel.setNames(binding.enterName.text.toString())
-                binding.namesView.text = viewModel.getNames()
-            }
-            else {
-                this.binding.namesView.text = getString(R.string.noNameEntered)
-            }
+        val resultObserver = Observer<String> {
+                result -> binding.logTextView.text = result.toString()
         }
+        viewModel.getText().observe(viewLifecycleOwner, resultObserver)
     }
 
 }

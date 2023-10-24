@@ -1,19 +1,20 @@
 package com.olmcmillen.lifecycleawareness
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel() {
 
-    private var enterName = ""
-    private var namesView = ""
+    companion object{
+        private var textToWatch: MutableLiveData<String> = MutableLiveData()
 
-    fun setNames (value: String) {
-        this.enterName = value
+        fun setText (value: String) {
+            textToWatch.value += value + "\n"
+        }
 
-        namesView += (enterName + "\n")
     }
 
-    fun getNames(): String{
-        return namesView
+    fun getText(): MutableLiveData<String>{
+        return textToWatch
     }
 
 }
