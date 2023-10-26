@@ -1,39 +1,40 @@
 package com.olmcmillen.lifecycleawareness
 
-import android.nfc.Tag
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import java.text.SimpleDateFormat
 import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 class MainObserver: DefaultLifecycleObserver {
 
-    var ts = LocalTime.now()
+    private var ts = LocalTime.now()
+    private val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSS")
+    private var formatTS = ts.format(formatter)
 
-    private val TAG = " was fired on " + ts
-    var mv = MainViewModel
+    private val wasFiredOn = " was fired on $formatTS"
+    private var mv = MainViewModel
 
     override fun onCreate(owner: LifecycleOwner) {
-        mv.setText("\nonCreate" + TAG)
+        mv.setText("\nonCreate$wasFiredOn")
     }
 
     override fun onResume(owner: LifecycleOwner) {
-        mv.setText("onResume" + TAG + "\n*************")
+        mv.setText("onResume$wasFiredOn\n*************")
     }
 
     override fun onPause(owner: LifecycleOwner) {
-        mv.setText("onPause" + TAG + "\n*************")
+        mv.setText("onPause$wasFiredOn\n*************")
     }
 
     override fun onStart(owner: LifecycleOwner) {
-        mv.setText("onStart" + TAG)
+        mv.setText("onStart$wasFiredOn")
     }
 
     override fun onStop(owner: LifecycleOwner) {
-        mv.setText("onStop" + TAG)
+        mv.setText("onStop$wasFiredOn")
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
-        mv.setText("onDestroy" + TAG + "\n*************")
+        mv.setText("onDestroy$wasFiredOn\n*************")
     }
 }

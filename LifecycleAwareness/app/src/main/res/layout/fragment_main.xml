@@ -9,14 +9,14 @@
 
     <TextView
         android:id="@+id/logTextView"
-        android:layout_width="285dp"
-        android:layout_height="452dp"
+        android:layout_width="321dp"
+        android:layout_height="459dp"
+        android:layout_marginBottom="16dp"
         android:hint="@string/namesViewText"
         android:textColorHint="#8D6E63"
-        android:textSize="16sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

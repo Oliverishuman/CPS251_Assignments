@@ -15,9 +15,9 @@ class MainFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var viewModel: MainViewModel
 
-    companion object {
-        fun newInstance() = MainFragment()
-    }
+//    companion object {
+//        fun newInstance() = MainFragment()
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
