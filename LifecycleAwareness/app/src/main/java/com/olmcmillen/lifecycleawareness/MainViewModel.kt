@@ -6,9 +6,11 @@ class MainViewModel : ViewModel() {
 
     companion object{
         private var textToWatch: MutableLiveData<String> = MutableLiveData()
+        private var emptyString = ""
 
         fun setText (value: String) {
-                textToWatch.value += value + "\n"
+            emptyString += value + "\n"
+            textToWatch.setValue(emptyString)
         }
     }
 
