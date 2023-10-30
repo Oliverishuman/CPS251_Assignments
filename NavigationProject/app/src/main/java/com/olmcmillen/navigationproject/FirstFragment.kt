@@ -31,7 +31,7 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.button.setOnClickListener {
+        binding.button1.setOnClickListener {
             val action: FirstFragmentDirections.MainToSecond  =
                 FirstFragmentDirections.mainToSecond()
             action.message = binding.userText.text.toString()
