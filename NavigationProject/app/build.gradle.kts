@@ -1,11 +1,12 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id ("androidx.navigation.safeargs")
 }
 
 android {
     namespace = "com.olmcmillen.navigationproject"
-    compileSdk = 33
+    compileSdk = 34
 
     buildFeatures {
         viewBinding = true
@@ -13,8 +14,8 @@ android {
 
     defaultConfig {
         applicationId = "com.olmcmillen.navigationproject"
-        minSdk = 26
-        targetSdk = 33
+        minSdk = 34
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
