@@ -19,15 +19,10 @@ class SecondFragment : Fragment() {
         fun onFragmentInteraction(uri: Uri)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_second, container, false)
 
@@ -39,7 +34,8 @@ class SecondFragment : Fragment() {
         super.onStart()
         arguments?.let {
             val args = SecondFragmentArgs.fromBundle(it)
-            binding.titleView.text = args.argsTitle
+            binding.titleView.text = args.argsHeaderText
+            binding.imageView.setImageResource(args.argsImageReference)
 //            binding.imageView3.setImageResource(args.imageToReference)
         }
     }

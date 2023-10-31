@@ -5,4 +5,8 @@
     <string name="button1">Display Image 1</string>
     <string name="button2">Display Image 2</string>
     <string name="button3">Display Image 3</string>
+    <string name="img1">Image 1 Text</string>
+    <string name="textview">Header Text</string>
+    <string name="where_image_will_go">Where image will go</string>
+    <string name="where_image_goes">Where image goes</string>
 </resources>

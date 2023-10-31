@@ -14,15 +14,10 @@ class FirstFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_first, container, false)
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
@@ -36,8 +31,8 @@ class FirstFragment : Fragment() {
         binding.button1.setOnClickListener {
             val action: FirstFragmentDirections.MainToSecond  =
                 FirstFragmentDirections.mainToSecond()
-            action.argsTitle = "Image 1"
-//            action.imageToReference = R.drawable.android_image_1
+            action.argsHeaderText = "Image 1"
+            action.argsImageReference = R.drawable.android_image_1
             Navigation.findNavController(it).navigate(action)
         }
 
@@ -45,8 +40,8 @@ class FirstFragment : Fragment() {
         binding.button2.setOnClickListener {
             val action: FirstFragmentDirections.MainToSecond  =
                 FirstFragmentDirections.mainToSecond()
-            action.argsTitle = "Image 2"
-//            action.imageToReference = R.drawable.android_image_1
+            action.argsHeaderText = "Image 2"
+            action.argsImageReference = R.drawable.android_image_2
             Navigation.findNavController(it).navigate(action)
         }
 
@@ -54,8 +49,8 @@ class FirstFragment : Fragment() {
         binding.button3.setOnClickListener {
             val action: FirstFragmentDirections.MainToSecond  =
                 FirstFragmentDirections.mainToSecond()
-            action.argsTitle = "Image 3"
-//            action.imageToReference = R.drawable.android_image_1
+            action.argsHeaderText = "Image 3"
+            action.argsImageReference = R.drawable.android_image_3
             Navigation.findNavController(it).navigate(action)
         }
     }
