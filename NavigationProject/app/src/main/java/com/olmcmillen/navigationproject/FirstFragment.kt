@@ -31,13 +31,33 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //If display image 1 button is clicked
         binding.button1.setOnClickListener {
             val action: FirstFragmentDirections.MainToSecond  =
                 FirstFragmentDirections.mainToSecond()
-            action.message = binding.userText.text.toString()
+            action.argsTitle = "Image 1"
+//            action.imageToReference = R.drawable.android_image_1
             Navigation.findNavController(it).navigate(action)
         }
 
+        //If display image 2 button is clicked
+        binding.button2.setOnClickListener {
+            val action: FirstFragmentDirections.MainToSecond  =
+                FirstFragmentDirections.mainToSecond()
+            action.argsTitle = "Image 2"
+//            action.imageToReference = R.drawable.android_image_1
+            Navigation.findNavController(it).navigate(action)
+        }
+
+        //If display image 3 button is clicked
+        binding.button3.setOnClickListener {
+            val action: FirstFragmentDirections.MainToSecond  =
+                FirstFragmentDirections.mainToSecond()
+            action.argsTitle = "Image 3"
+//            action.imageToReference = R.drawable.android_image_1
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     override fun onDestroyView() {
