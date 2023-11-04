@@ -36,7 +36,6 @@ class SecondFragment : Fragment() {
             val args = SecondFragmentArgs.fromBundle(it)
             binding.titleView.text = args.argsHeaderText
             binding.imageView.setImageResource(args.argsImageReference)
-//            binding.imageView3.setImageResource(args.imageToReference)
         }
     }
 
