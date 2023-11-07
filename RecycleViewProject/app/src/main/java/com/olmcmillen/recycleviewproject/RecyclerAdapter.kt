@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 
-    private val thisData = Data()
+    private val dataClass = Data()
 
     class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
         var itemImage: ImageView
@@ -30,16 +30,14 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
     }
 
     override fun getItemCount(): Int {
-        return thisData.titles.size
+        return dataClass.titles.size
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
 
-
-
-        viewHolder.itemTitle.text = thisData.titles[(0..7).random()]
-        viewHolder.itemDetail.text = thisData.details[(0..7).random()]
-        viewHolder.itemImage.setImageResource(thisData.images[(0..7).random()])
+        viewHolder.itemTitle.text = dataClass.titles[(0..7).random()]
+        viewHolder.itemDetail.text = dataClass.details[(0..7).random()]
+        viewHolder.itemImage.setImageResource(dataClass.images[(0..7).random()])
     }
 
 }
