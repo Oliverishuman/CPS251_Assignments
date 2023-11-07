@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         layoutManager = LinearLayoutManager(this)
-        binding.contentMain.recyclerView.layoutManager = layoutManager
+        binding.recyclerView.layoutManager = layoutManager
         adapter = RecyclerAdapter()
-        binding.contentMain.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
