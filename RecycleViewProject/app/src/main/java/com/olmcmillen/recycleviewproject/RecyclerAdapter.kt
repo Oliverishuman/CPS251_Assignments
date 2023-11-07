@@ -6,11 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.olmcmillen.recycleviewproject.Data
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 
-    val thisData = Data();
+    private val thisData = Data()
 
     class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
         var itemImage: ImageView
@@ -35,9 +34,12 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        viewHolder.itemTitle.text = thisData.titles[i]
-        viewHolder.itemDetail.text = thisData.details[i]
-        viewHolder.itemImage.setImageResource(thisData.images[i])
+
+
+
+        viewHolder.itemTitle.text = thisData.titles[(0..7).random()]
+        viewHolder.itemDetail.text = thisData.details[(0..7).random()]
+        viewHolder.itemImage.setImageResource(thisData.images[(0..7).random()])
     }
-    
+
 }
