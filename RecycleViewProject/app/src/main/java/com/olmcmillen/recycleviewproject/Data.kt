@@ -14,6 +14,6 @@ class Data {
         R.drawable.android_image_2, R.drawable.android_image_3,
         R.drawable.android_image_4, R.drawable.android_image_5,
         R.drawable.android_image_6, R.drawable.android_image_7,
-        R.drawable.android_image_7)
+        R.drawable.android_image_8)
 
 }
