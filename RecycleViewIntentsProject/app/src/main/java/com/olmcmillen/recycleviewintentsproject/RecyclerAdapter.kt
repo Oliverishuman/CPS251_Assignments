@@ -20,6 +20,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
             itemImage = itemView.findViewById(R.id.itemImage)
             itemTitle = itemView.findViewById(R.id.itemTitle)
             itemDetail = itemView.findViewById(R.id.itemDetail)
+
         }
     }
 
