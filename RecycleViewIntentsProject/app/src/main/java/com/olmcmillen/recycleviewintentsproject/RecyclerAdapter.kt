@@ -9,9 +9,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
+class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 
     private val dataClass = Data()
+
 
     class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
         var itemImage: ImageView
@@ -27,9 +28,10 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
                 val i = Intent(v.context, MainActivity2::class.java)
 
 
-                i.putExtra("title", itemTitle.text)
+                i.putExtra("titles", itemTitle.text)
                 i.putExtra("detail", itemDetail.text)
-                i.putExtra("image", itemImage.imageAlpha)
+                i.putExtra("image", itemImage.id)
+//                i.putExtra("image", itemImage.imageAlpha)
 
 
                 startActivity(v.context,i,null)
@@ -53,6 +55,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
         viewHolder.itemTitle.text = dataClass.titles[(0..7).random()]
         viewHolder.itemDetail.text = dataClass.details[(0..7).random()]
         viewHolder.itemImage.setImageResource(dataClass.images[(0..7).random()])
+
     }
 
 }

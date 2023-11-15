@@ -17,13 +17,14 @@ class MainActivity2 : AppCompatActivity() {
         setContentView(binding.root)
 
         val extras = intent.extras ?: return
-        val titleText = extras.getString("title")
+        val titleText = extras.getString("titles")
         val detailsText = extras.getString("detail")
         val imageView = extras.getInt("image")
+//        val imageView = extras.getInt("image")
 
         binding.titleTextView.text = titleText
         binding.detailsTextView.text = detailsText
-        binding.imageView.setImageDrawable(imageView.toDrawable())
-
+        binding.imageView.id = imageView
+//        binding.imageView.setImageBitmap(imageView)
     }
 }
