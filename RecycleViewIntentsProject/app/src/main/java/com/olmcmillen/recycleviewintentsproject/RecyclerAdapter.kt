@@ -1,10 +1,12 @@
 package com.olmcmillen.recycleviewintentsproject
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
@@ -20,6 +22,18 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
             itemImage = itemView.findViewById(R.id.itemImage)
             itemTitle = itemView.findViewById(R.id.itemTitle)
             itemDetail = itemView.findViewById(R.id.itemDetail)
+
+            itemView.setOnClickListener { v: View  ->
+                val i = Intent(v.context, MainActivity2::class.java)
+
+
+                i.putExtra("title", itemTitle.text)
+                i.putExtra("detail", itemDetail.text)
+                i.putExtra("image", itemImage.imageAlpha)
+
+
+                startActivity(v.context,i,null)
+            }
 
         }
     }
