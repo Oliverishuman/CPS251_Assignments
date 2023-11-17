@@ -2,11 +2,11 @@ package com.olmcmillen.recycleviewintentsproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.graphics.drawable.toDrawable
 import com.olmcmillen.recycleviewintentsproject.databinding.ActivityMain2Binding
-import com.olmcmillen.recycleviewintentsproject.databinding.ActivityMainBinding
 
 class MainActivity2 : AppCompatActivity() {
+
+    private val dataClass = Data()
 
     private lateinit var binding: ActivityMain2Binding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,14 +17,13 @@ class MainActivity2 : AppCompatActivity() {
         setContentView(binding.root)
 
         val extras = intent.extras ?: return
-        val titleText = extras.getString("titles")
-        val detailsText = extras.getString("detail")
+        val titleText = extras.getInt("title")
+        val detailsText = extras.getInt("detail")
         val imageView = extras.getInt("image")
-//        val imageView = extras.getInt("image")
 
-        binding.titleTextView.text = titleText
-        binding.detailsTextView.text = detailsText
-        binding.imageView.id = imageView
+        binding.titleTextView.text = dataClass.titles[titleText]
+        binding.detailsTextView.text = dataClass.details[detailsText]
+        binding.imageView.setImageResource(dataClass.images[imageView])
 //        binding.imageView.setImageBitmap(imageView)
     }
 }

@@ -8,16 +8,20 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.random.Random
 
 class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 
     private val dataClass = Data()
+    var imageNumber=0
+    var titleNumber=0
+    var detailNumber=0
 
-
-    class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder (itemView: View, detailNumber: Int, titleNumber : Int, imageNumber: Int) : RecyclerView.ViewHolder(itemView) {
         var itemImage: ImageView
         var itemTitle: TextView
         var itemDetail: TextView
+
 
         init {
             itemImage = itemView.findViewById(R.id.itemImage)
@@ -28,10 +32,9 @@ class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
                 val i = Intent(v.context, MainActivity2::class.java)
 
 
-                i.putExtra("titles", itemTitle.text)
-                i.putExtra("detail", itemDetail.text)
-                i.putExtra("image", itemImage.id)
-//                i.putExtra("image", itemImage.imageAlpha)
+                i.putExtra("title", titleNumber)
+                i.putExtra("detail", imageNumber)
+                i.putExtra("image", detailNumber)
 
 
                 startActivity(v.context,i,null)
@@ -43,7 +46,16 @@ class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
         val v = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.card_layout, viewGroup, false)
-        return ViewHolder(v)
+
+        var imageNumber = Random.nextInt(0, 7)
+        var titleNumber = Random.nextInt(0, 7)
+        var detailNumber = Random.nextInt(0, 7)
+
+        this.imageNumber = imageNumber
+        this.titleNumber = titleNumber
+        this.detailNumber = detailNumber
+
+        return ViewHolder(v, imageNumber, titleNumber, detailNumber)
     }
 
     override fun getItemCount(): Int {
@@ -52,9 +64,9 @@ class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
 
-        viewHolder.itemTitle.text = dataClass.titles[(0..7).random()]
-        viewHolder.itemDetail.text = dataClass.details[(0..7).random()]
-        viewHolder.itemImage.setImageResource(dataClass.images[(0..7).random()])
+        viewHolder.itemTitle.text = dataClass.titles[titleNumber]
+        viewHolder.itemDetail.text = dataClass.details[detailNumber]
+        viewHolder.itemImage.setImageResource(dataClass.images[imageNumber])
 
     }
 
