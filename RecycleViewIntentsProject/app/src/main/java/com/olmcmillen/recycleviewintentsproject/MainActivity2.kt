@@ -24,6 +24,5 @@ class MainActivity2 : AppCompatActivity() {
         binding.titleTextView.text = dataClass.titles[titleText]
         binding.detailsTextView.text = dataClass.details[detailsText]
         binding.imageView.setImageResource(dataClass.images[imageView])
-//        binding.imageView.setImageBitmap(imageView)
     }
 }

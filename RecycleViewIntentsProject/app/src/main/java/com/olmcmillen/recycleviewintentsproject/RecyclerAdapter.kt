@@ -10,12 +10,12 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.random.Random
 
-class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
+class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 
     private val dataClass = Data()
-    var imageNumber=0
-    var titleNumber=0
-    var detailNumber=0
+    private var imageNumber=0
+    private var titleNumber=0
+    private var detailNumber=0
 
     class ViewHolder (itemView: View, detailNumber: Int, titleNumber : Int, imageNumber: Int) : RecyclerView.ViewHolder(itemView) {
         var itemImage: ImageView
@@ -47,9 +47,9 @@ class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
         val v = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.card_layout, viewGroup, false)
 
-        var imageNumber = Random.nextInt(0, 7)
-        var titleNumber = Random.nextInt(0, 7)
-        var detailNumber = Random.nextInt(0, 7)
+        val imageNumber = Random.nextInt(0, 7)
+        val titleNumber = Random.nextInt(0, 7)
+        val detailNumber = Random.nextInt(0, 7)
 
         this.imageNumber = imageNumber
         this.titleNumber = titleNumber
