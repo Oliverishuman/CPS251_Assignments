@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+
 
         layoutManager = LinearLayoutManager(this)
         binding.contentMain.recyclerView.layoutManager = layoutManager
