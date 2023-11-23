@@ -4,14 +4,17 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.olmcmillen.coroutinesproject.databinding.ActivityMainBinding
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
@@ -31,8 +34,25 @@ class MainActivity : AppCompatActivity() {
         binding.contentMain.recyclerView.adapter = adapter
 
         binding.button1.setOnClickListener(){
-            viewModel.addNames(binding.enterName.text.toString())
-            adapter?.notifyItemInserted(viewModel.getNames().size)
+//            viewModel.addNames(binding.enterName.text.toString())
+//            adapter?.notifyItemInserted(viewModel.getNames().size)
+
+            suspend fun performTask(name : String): String {
+                val delay = (1..10).random() * 1000
+                delay(delay.toLong())
+                return "The name is $name and the delay was $delay milliseconds."
+            }
+
+                val name = binding.enterName.text.toString()
+                coroutineScope.launch(Dispatchers.Main) {
+                        viewModel.addNames(performTask(name))
+                        adapter?.notifyItemInserted(viewModel.getNames().size - 1)
+
+                }
+
+
+
+
         }
     }
 
@@ -51,4 +71,5 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 }
