@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
 
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
-    private val dataClass = Data()
     private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +31,6 @@ class MainActivity : AppCompatActivity() {
         binding.contentMain.recyclerView.adapter = adapter
 
         binding.button1.setOnClickListener(){
-            binding.textView1.text = "The button was clicked!"
-
             viewModel.addNames(binding.enterName.text.toString())
             adapter?.notifyItemInserted(viewModel.getNames().size)
         }

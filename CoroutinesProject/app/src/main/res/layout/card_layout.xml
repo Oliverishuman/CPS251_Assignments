@@ -22,7 +22,7 @@
             android:id="@+id/itemDetail"
             android:layout_width="292dp"
             android:layout_height="32dp"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
