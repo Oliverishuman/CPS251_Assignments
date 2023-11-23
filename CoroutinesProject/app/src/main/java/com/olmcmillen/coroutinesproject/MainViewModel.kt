@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel() {
 
-    val namesArray = ArrayList<String>()
+    var namesArray = ArrayList<String>()
 
     val details = arrayOf("Item one details", "Item two details",
         "Item three details", "Item four details",
@@ -12,7 +12,8 @@ class MainViewModel : ViewModel() {
         "Item seven details", "Item eight details")
 
     fun addNames(name: String) {
-        namesArray.add(name)
+        namesArray += name
+
     }
 
     fun getNames(): ArrayList<String> {

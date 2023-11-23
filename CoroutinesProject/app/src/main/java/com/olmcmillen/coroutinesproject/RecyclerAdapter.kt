@@ -35,7 +35,7 @@ class RecyclerAdapter(viewModel: MainViewModel) : RecyclerView.Adapter<RecyclerA
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
 
-        viewHolder.itemDetail.text = namesArray.size.toString()
+        viewHolder.itemDetail.text = namesArray[i]
     }
 
 }

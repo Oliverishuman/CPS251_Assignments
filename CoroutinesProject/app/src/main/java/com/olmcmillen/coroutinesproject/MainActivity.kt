@@ -34,8 +34,8 @@ class MainActivity : AppCompatActivity() {
         binding.button1.setOnClickListener(){
             binding.textView1.text = "The button was clicked!"
 
-            viewModel.addNames(binding.enterName.toString())
-            adapter?.notifyItemInserted(viewModel.namesArray.size)
+            viewModel.addNames(binding.enterName.text.toString())
+            adapter?.notifyItemInserted(viewModel.getNames().size)
         }
     }
 

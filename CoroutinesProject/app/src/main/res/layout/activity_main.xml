@@ -42,7 +42,6 @@
         android:ems="10"
         android:inputType="text"
         android:minHeight="48dp"
-        android:text="@string/enter_name"
         app:layout_constraintBottom_toTopOf="@+id/button1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.499"
