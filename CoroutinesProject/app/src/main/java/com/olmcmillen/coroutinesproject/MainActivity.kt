@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.olmcmillen.coroutinesproject.databinding.ActivityMainBinding
@@ -14,19 +15,28 @@ class MainActivity : AppCompatActivity() {
 
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
+    private val dataClass = Data()
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
 
         layoutManager = LinearLayoutManager(this)
         binding.contentMain.recyclerView.layoutManager = layoutManager
-        adapter = RecyclerAdapter()
+        adapter = RecyclerAdapter(viewModel)
         binding.contentMain.recyclerView.adapter = adapter
+
+        binding.button1.setOnClickListener(){
+            binding.textView1.text = "The button was clicked!"
+
+            viewModel.addNames(binding.enterName.toString())
+            adapter?.notifyItemInserted(viewModel.namesArray.size)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

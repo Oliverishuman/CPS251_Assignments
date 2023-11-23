@@ -7,9 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
+class RecyclerAdapter(viewModel: MainViewModel) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 
-    private val dataClass = Data()
+    private var namesArray = viewModel.getNames()
+
+//    private val dataClass = Data()
 
     class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -28,12 +30,12 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
     }
 
     override fun getItemCount(): Int {
-        return dataClass.titles.size
+        return namesArray.size
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
 
-        viewHolder.itemDetail.text = dataClass.details[(0..7).random()]
+        viewHolder.itemDetail.text = namesArray.size.toString()
     }
 
 }
