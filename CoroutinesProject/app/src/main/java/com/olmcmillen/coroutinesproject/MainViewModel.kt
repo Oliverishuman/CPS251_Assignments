@@ -8,7 +8,6 @@ class MainViewModel : ViewModel() {
 
     fun addNames(name: String) {
         namesArray += name
-
     }
 
     fun getNames(): ArrayList<String> {

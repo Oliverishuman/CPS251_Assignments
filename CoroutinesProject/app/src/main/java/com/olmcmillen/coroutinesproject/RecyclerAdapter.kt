@@ -18,7 +18,6 @@ class RecyclerAdapter(viewModel: MainViewModel) : RecyclerView.Adapter<RecyclerA
         var itemDetail: TextView
 
         init {
-
             itemDetail = itemView.findViewById(R.id.itemDetail)
         }
     }

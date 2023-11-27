@@ -39,13 +39,14 @@ class MainActivity : AppCompatActivity() {
 
             suspend fun performTask(name : String): String {
                 val delay = (1..10).random() * 1000
+                val name = name
+
                 delay(delay.toLong())
                 return "The name is $name and the delay was $delay milliseconds."
             }
 
-                val name = binding.enterName.text.toString()
                 coroutineScope.launch(Dispatchers.Main) {
-                        viewModel.addNames(performTask(name))
+                        viewModel.addNames(performTask(binding.enterName.text.toString()))
                         adapter?.notifyItemInserted(viewModel.getNames().size - 1)
 
                 }
