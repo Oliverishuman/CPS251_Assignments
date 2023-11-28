@@ -2,9 +2,6 @@ package com.olmcmillen.coroutinesproject
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
 
         layoutManager = LinearLayoutManager(this)
@@ -33,13 +30,12 @@ class MainActivity : AppCompatActivity() {
         adapter = RecyclerAdapter(viewModel)
         binding.contentMain.recyclerView.adapter = adapter
 
-        binding.button1.setOnClickListener(){
+        binding.button1.setOnClickListener{
 //            viewModel.addNames(binding.enterName.text.toString())
 //            adapter?.notifyItemInserted(viewModel.getNames().size)
 
             suspend fun performTask(name : String): String {
                 val delay = (1..10).random() * 1000
-                val name = name
 
                 delay(delay.toLong())
                 return "The name is $name and the delay was $delay milliseconds."

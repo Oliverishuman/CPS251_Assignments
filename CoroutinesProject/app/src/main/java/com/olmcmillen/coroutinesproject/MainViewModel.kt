@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel() {
 
-    var namesArray = ArrayList<String>()
+    private var namesArray = ArrayList<String>()
 
     fun addNames(name: String) {
         namesArray += name
