@@ -44,33 +44,28 @@ class MainActivity : AppCompatActivity() {
                 delay(delay.toLong())
                 return "The name is $name and the delay was $delay milliseconds."
             }
-
                 coroutineScope.launch(Dispatchers.Main) {
-                        viewModel.addNames(performTask(binding.enterName.text.toString()))
-                        adapter?.notifyItemInserted(viewModel.getNames().size - 1)
-
+                        val returnedString = performTask(binding.enterName.text.toString())
+                        viewModel.addNames(returnedString)
+                        adapter?.notifyItemInserted(viewModel.getNames().size)
                 }
-
-
-
-
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        menuInflater.inflate(R.menu.menu_main, menu)
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        return when (item.itemId) {
+//            R.id.action_settings -> true
+//            else -> super.onOptionsItemSelected(item)
+//        }
+//    }
 
 }

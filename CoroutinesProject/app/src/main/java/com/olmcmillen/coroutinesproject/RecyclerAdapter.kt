@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 class RecyclerAdapter(viewModel: MainViewModel) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 
     private var namesArray = viewModel.getNames()
-
 //    private val dataClass = Data()
 
     class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
