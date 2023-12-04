@@ -88,32 +88,29 @@
 
         <Button
             android:id="@+id/addButton"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/add"
-            android:textColor="?attr/colorPrimary"
             tools:ignore="VisualLintButtonSize" />
 
         <Button
             android:id="@+id/findButton"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/find"
-            android:textColor="?attr/colorPrimary"
             tools:ignore="VisualLintButtonSize" />
 
         <Button
             android:id="@+id/deleteButton"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/delete"
-            android:textColor="?attr/colorPrimary"
             tools:ignore="VisualLintButtonSize" />
     </LinearLayout>
 

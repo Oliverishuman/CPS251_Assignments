@@ -3,20 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="71dp"
+    android:layout_margin="5dp"
     android:orientation="vertical"
     android:padding="16dp"
-    android:layout_margin="5dp"
-    app:cardBackgroundColor="#91E4D4">
+    app:cardBackgroundColor="#8ACC72">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/product_row_name"
             android:layout_width="150dp"
             android:layout_height="30dp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/product_row_quantity"
