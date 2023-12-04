@@ -14,17 +14,19 @@ class Product {
 
     @ColumnInfo(name = "productName")
     var productName: String? = null
-    var quantity: Int = 0
+
+    @ColumnInfo(name = "productQuantity")
+    var productQuantity: Int = 0
 
     constructor() {}
 
-    constructor(id: Int, productname: String, quantity: Int) {
+    constructor(id: Int, productname: String, productquantity: Int) {
         this.productName = productname
-        this.quantity = quantity
+        this.productQuantity = productquantity
     }
-    constructor(productname: String, quantity: Int) {
+    constructor(productname: String, productquantity: Int) {
         this.productName = productname
-        this.quantity = quantity
+        this.productQuantity = productquantity
     }
 
 

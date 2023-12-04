@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                     binding.productQuantity.setText(
                         String.format(
                             Locale.US, "%d",
-                            it[0].quantity
+                            it[0].productQuantity
                         )
                     )
                 } else {

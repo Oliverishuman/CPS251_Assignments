@@ -15,7 +15,7 @@ class ProductListAdapter (private val productItemLayout: Int) : RecyclerView.Ada
 
         productList.let {
             name.text = it!![listPosition].productName
-            quantity.text = it!![listPosition].quantity.toString()
+            quantity.text = it!![listPosition].productQuantity.toString()
         }
     }
 
