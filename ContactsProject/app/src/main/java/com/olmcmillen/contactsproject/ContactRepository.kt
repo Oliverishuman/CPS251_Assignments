@@ -26,12 +26,12 @@ class ContactRepository(application: Application){
     private fun asyncInsert(contact: Contact) {
         contactDao?.insertContact(contact)
     }
-    fun deleteContact(name: String) {
+    fun deleteContact(name: Int) {
         coroutineScope.launch(Dispatchers.IO) {
             asyncDelete(name)
         }
     }
-    private fun asyncDelete(name: String) {
+    private fun asyncDelete(name: Int) {
         contactDao?.deleteContact(name)
     }
     fun findContact(name: String) {

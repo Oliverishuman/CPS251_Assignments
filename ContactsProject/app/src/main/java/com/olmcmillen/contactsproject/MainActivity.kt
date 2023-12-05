@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var adapter: ContactListAdapter? = null
     private val viewModel: MainViewModel by viewModels()
+    var contactID : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clearFields() {
+        binding.contactID.setText("")
         binding.contactName.setText("")
         binding.contactPhone.setText("")
     }
@@ -48,7 +50,10 @@ class MainActivity : AppCompatActivity() {
             binding.contactName.text.toString()) }
 
         binding.deleteButton.setOnClickListener {
-            viewModel.deleteContact(binding.contactName.text.toString())
+            //REQUIRES TO ENTER NAME INTO "ENTER NAME FIELD", THEN CLICK DELETE BUTTON TWICE TO DELETE THAT RECORD
+            viewModel.findContact(binding.contactName.text.toString())
+            viewModel.deleteContact(contactID)
+//            viewModel.deleteContact(binding.contactName.text.toString())
 
             clearFields()
         }
@@ -64,7 +69,8 @@ class MainActivity : AppCompatActivity() {
         viewModel.getSearchResults().observe(this) { contacts ->
             contacts?.let {
                 if (it.isNotEmpty()) {
-
+                    binding.contactID.text = String.format(Locale.US, "%d", it[0].id)
+                    contactID = it[0].id
                     binding.contactName.setText(it[0].contactName)
                     binding.contactPhone.setText(it[0].contactPhone)
                 } else {
