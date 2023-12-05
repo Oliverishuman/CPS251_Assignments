@@ -3,77 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TableLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/errorView"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="38dp"
+            android:layout_marginBottom="52dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/contactName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/errorView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="TextView" />
-        </TableRow>
+        <EditText
+            android:id="@+id/contactPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/contact_phone"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contactName"
+            tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp">
-
-            <TextView
-                android:id="@+id/contactNameText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/product_name"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/contactName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="18sp"
-                tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck"
-                android:importantForAutofill="no" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp">
-
-            <TextView
-                android:id="@+id/contactPhoneText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/product_quantity"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/contactPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textSize="18sp"
-                tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-        </TableRow>
-
-    </TableLayout>
+        <EditText
+            android:id="@+id/contactName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/contact_name"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/contactPhone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="6dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -109,6 +95,6 @@
         android:id="@+id/contact_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp" />
+        android:layout_margin="6dp" />
 
 </LinearLayout>
