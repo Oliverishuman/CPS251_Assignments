@@ -26,22 +26,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clearFields() {
-        binding.contactID.text = ""
         binding.contactName.setText("")
-        binding.contactQuantity.setText("")
+        binding.contactPhone.setText("")
     }
 
     private fun listenerSetup() {
         binding.addButton.setOnClickListener {
             val name = binding.contactName.text.toString()
-            val quantity = binding.contactQuantity.text.toString()
+            val quantity = binding.contactPhone.text.toString()
 
             if (name != "" && quantity != "") {
-                val contact = Contact(name, Integer.parseInt(quantity))
+                val contact = Contact(name, quantity)
                 viewModel.insertContact(contact)
                 clearFields()
             } else {
-                binding.contactID.text = "Incomplete information"
+                binding.errorView.text = "Incomplete information"
             }
         }
 
@@ -65,16 +64,11 @@ class MainActivity : AppCompatActivity() {
         viewModel.getSearchResults().observe(this) { contacts ->
             contacts?.let {
                 if (it.isNotEmpty()) {
-                    binding.contactID.text = String.format(Locale.US, "%d", it[0].id)
+
                     binding.contactName.setText(it[0].contactName)
-                    binding.contactQuantity.setText(
-                        String.format(
-                            Locale.US, "%d",
-                            it[0].contactQuantity
-                        )
-                    )
+                    binding.contactPhone.setText(it[0].contactPhone)
                 } else {
-                    binding.contactID.text = "No Match"
+                    binding.errorView.text = "No Match"
                 }
             }
         }

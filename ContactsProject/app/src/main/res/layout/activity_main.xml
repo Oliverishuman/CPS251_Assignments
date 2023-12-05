@@ -13,22 +13,13 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp">
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/contactIDText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/product_id"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/contactID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/not_assigned"
-                android:textSize="18sp" />
+                android:id="@+id/errorView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="TextView" />
         </TableRow>
 
         <TableRow
@@ -60,21 +51,21 @@
             android:layout_margin="10dp">
 
             <TextView
-                android:id="@+id/contactQuantityText"
+                android:id="@+id/contactPhoneText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/product_quantity"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/contactQuantity"
+                android:id="@+id/contactPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="numberDecimal"
+                android:importantForAutofill="no"
+                android:inputType="text"
                 android:textSize="18sp"
-                tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck"
-                android:importantForAutofill="no" />
+                tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </TableRow>
 
     </TableLayout>

@@ -15,7 +15,7 @@ class ContactListAdapter (private val contactItemLayout: Int) : RecyclerView.Ada
 
         contactList.let {
             name.text = it!![listPosition].contactName
-            quantity.text = it!![listPosition].contactQuantity.toString()
+            quantity.text = it!![listPosition].contactPhone
         }
     }
 
