@@ -57,6 +57,11 @@ class MainActivity : AppCompatActivity() {
 
             clearFields()
         }
+
+        binding.ascButton.setOnClickListener{
+            viewModel.sortByAsc()
+//            adapter?.setContactList(viewModel.sortByAsc())
+        }
     }
 
     private fun observerSetup() {

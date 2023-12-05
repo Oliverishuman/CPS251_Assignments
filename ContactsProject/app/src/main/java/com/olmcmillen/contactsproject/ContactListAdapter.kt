@@ -14,12 +14,10 @@ class ContactListAdapter (private val contactItemLayout: Int) : RecyclerView.Ada
     override fun onBindViewHolder(holder: ViewHolder, listPosition: Int) {
         val name = holder.itemName
         val quantity = holder.itemQuantity
-//        val icon = holder.itemImage
 
         contactList.let {
             name.text = it!![listPosition].contactName
             quantity.text = it!![listPosition].contactPhone
-//            icon.setImageResource(baseline_delete_24)
         }
     }
 
@@ -42,7 +40,6 @@ class ContactListAdapter (private val contactItemLayout: Int) : RecyclerView.Ada
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var itemName: TextView = itemView.findViewById(R.id.contact_row_name)
         var itemQuantity: TextView = itemView.findViewById(R.id.contact_row_quantity)
-//        var itemImage : ImageView = itemView.findViewById(R.id.contact_row_quantity)
 
     }
 

@@ -103,6 +103,24 @@
             android:layout_weight="1"
             android:text="@string/delete"
             tools:ignore="VisualLintButtonSize" />
+
+        <Button
+            android:id="@+id/ascButton"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/asc"
+            tools:ignore="VisualLintButtonSize" />
+
+        <Button
+            android:id="@+id/descButton"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/desc"
+            tools:ignore="VisualLintButtonSize" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
