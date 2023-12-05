@@ -10,7 +10,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var adapter: ProductListAdapter? = null
+    private var adapter: ContactListAdapter? = null
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,64 +26,64 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clearFields() {
-        binding.productID.text = ""
-        binding.productName.setText("")
-        binding.productQuantity.setText("")
+        binding.contactID.text = ""
+        binding.contactName.setText("")
+        binding.contactQuantity.setText("")
     }
 
     private fun listenerSetup() {
         binding.addButton.setOnClickListener {
-            val name = binding.productName.text.toString()
-            val quantity = binding.productQuantity.text.toString()
+            val name = binding.contactName.text.toString()
+            val quantity = binding.contactQuantity.text.toString()
 
             if (name != "" && quantity != "") {
-                val product = Product(name, Integer.parseInt(quantity))
-                viewModel.insertProduct(product)
+                val contact = Contact(name, Integer.parseInt(quantity))
+                viewModel.insertContact(contact)
                 clearFields()
             } else {
-                binding.productID.text = "Incomplete information"
+                binding.contactID.text = "Incomplete information"
             }
         }
 
-        binding.findButton.setOnClickListener { viewModel.findProduct(
-            binding.productName.text.toString()) }
+        binding.findButton.setOnClickListener { viewModel.findContact(
+            binding.contactName.text.toString()) }
 
         binding.deleteButton.setOnClickListener {
-            viewModel.deleteProduct(binding.productName.text.toString())
+            viewModel.deleteContact(binding.contactName.text.toString())
 
             clearFields()
         }
     }
 
     private fun observerSetup() {
-        viewModel.getAllProducts()?.observe(this) { products ->
-            products?.let {
-                adapter?.setProductList(it)
+        viewModel.getAllContacts()?.observe(this) { contacts ->
+            contacts?.let {
+                adapter?.setContactList(it)
             }
         }
 
-        viewModel.getSearchResults().observe(this) { products ->
-            products?.let {
+        viewModel.getSearchResults().observe(this) { contacts ->
+            contacts?.let {
                 if (it.isNotEmpty()) {
-                    binding.productID.text = String.format(Locale.US, "%d", it[0].id)
-                    binding.productName.setText(it[0].productName)
-                    binding.productQuantity.setText(
+                    binding.contactID.text = String.format(Locale.US, "%d", it[0].id)
+                    binding.contactName.setText(it[0].contactName)
+                    binding.contactQuantity.setText(
                         String.format(
                             Locale.US, "%d",
-                            it[0].productQuantity
+                            it[0].contactQuantity
                         )
                     )
                 } else {
-                    binding.productID.text = "No Match"
+                    binding.contactID.text = "No Match"
                 }
             }
         }
     }
 
     private fun recyclerSetup() {
-        adapter = ProductListAdapter(R.layout.product_list_item)
-        binding.productRecycler.layoutManager = LinearLayoutManager(this)
-        binding.productRecycler.adapter = adapter
+        adapter = ContactListAdapter(R.layout.contact_list_item)
+        binding.contactRecycler.layoutManager = LinearLayoutManager(this)
+        binding.contactRecycler.adapter = adapter
     }
 
 }

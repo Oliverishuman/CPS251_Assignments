@@ -6,38 +6,38 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ProductListAdapter (private val productItemLayout: Int) : RecyclerView.Adapter<ProductListAdapter.ViewHolder>(){
+class ContactListAdapter (private val contactItemLayout: Int) : RecyclerView.Adapter<ContactListAdapter.ViewHolder>(){
 
-    private var productList: List<Product>? = null
+    private var contactList: List<Contact>? = null
     override fun onBindViewHolder(holder: ViewHolder, listPosition: Int) {
         val name = holder.itemName
         val quantity = holder.itemQuantity
 
-        productList.let {
-            name.text = it!![listPosition].productName
-            quantity.text = it!![listPosition].productQuantity.toString()
+        contactList.let {
+            name.text = it!![listPosition].contactName
+            quantity.text = it!![listPosition].contactQuantity.toString()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            productItemLayout, parent, false)
+            contactItemLayout, parent, false)
         return ViewHolder(view)
     }
 
-    fun setProductList(products: List<Product>) {
-        productList = products
+    fun setContactList(contacts: List<Contact>) {
+        contactList = contacts
         notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
-        return if (productList == null) 0 else productList!!.size
+        return if (contactList == null) 0 else contactList!!.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var itemName: TextView = itemView.findViewById(R.id.product_row_name)
-        var itemQuantity: TextView = itemView.findViewById(R.id.product_row_quantity)
+        var itemName: TextView = itemView.findViewById(R.id.contact_row_name)
+        var itemQuantity: TextView = itemView.findViewById(R.id.contact_row_quantity)
 
     }
 
