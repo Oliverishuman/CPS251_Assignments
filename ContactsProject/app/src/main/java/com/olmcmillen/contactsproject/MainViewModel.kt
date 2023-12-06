@@ -10,13 +10,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application){
 
     private val repository: ContactRepository = ContactRepository(application)
     private val allContacts: LiveData<List<Contact>>?
-//    private val sortedAscContacts: LiveData<List<Contact>>?
     private val searchResults: MutableLiveData<List<Contact>>
 
     init {
         allContacts = repository.allContacts
         searchResults = repository.searchResults
-//        sortedAscContacts = repository.sortedAscContacts
     }
 
     fun insertContact(contact: Contact) {

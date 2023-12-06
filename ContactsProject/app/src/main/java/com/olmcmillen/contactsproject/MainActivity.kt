@@ -2,6 +2,7 @@ package com.olmcmillen.contactsproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.Toast
 import com.olmcmillen.contactsproject.databinding.ActivityMainBinding
 import androidx.activity.viewModels
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var adapter: ContactListAdapter? = null
     private val viewModel: MainViewModel by viewModels()
-//    var contactID : Int = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun listenerSetup() {
+        binding.contactName.requestFocus()
+
         binding.addButton.setOnClickListener {
             val name = binding.contactName.text.toString()
             val quantity = binding.contactPhone.text.toString()
@@ -42,20 +45,24 @@ class MainActivity : AppCompatActivity() {
                 val contact = Contact(name, quantity)
                 viewModel.insertContact(contact)
                 clearFields()
+
             } else {
                 val toast = Toast.makeText(this, "Please enter name and phone number", Toast.LENGTH_LONG)
+
                 toast.show()
             }
+            binding.contactName.requestFocus()
         }
 
         binding.findButton.setOnClickListener {
             if (binding.contactName.text.isNotEmpty()) {
                 viewModel.findContact(binding.contactName.text.toString())
+                clearFields()
             } else {
                 val toast = Toast.makeText(this, "You must enter name to search", Toast.LENGTH_LONG)
                 toast.show()
             }
-
+            binding.contactName.requestFocus()
         }
 
         binding.deleteButton.setOnClickListener {
@@ -69,12 +76,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.ascButton.setOnClickListener{
             viewModel.sortByAsc()
-//            adapter?.setContactList(viewModel.sortByAsc())
+            binding.contactName.requestFocus()
+
         }
 
         binding.descButton.setOnClickListener{
             viewModel.sortByDesc()
-//            adapter?.setContactList(viewModel.sortByDesc())
+            binding.contactName.requestFocus()
+
         }
     }
 

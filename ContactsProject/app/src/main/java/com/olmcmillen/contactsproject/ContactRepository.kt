@@ -11,14 +11,12 @@ class ContactRepository(application: Application){
     private var contactDao: ContactDAO?
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
     val allContacts: LiveData<List<Contact>>?
-//    val sortedAscContacts: LiveData<List<Contact>>?
 
     init {
         val db: ContactRoomDatabase? =
             ContactRoomDatabase.getDatabase(application)
         contactDao = db?.contactDao()
         allContacts = contactDao?.getAllContacts()
-//        sortedAscContacts = contactDao?.sortByAsc()
     }
 
     fun insertContact(newcontact: Contact) {
