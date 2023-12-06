@@ -2,6 +2,7 @@ package com.olmcmillen.contactsproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.olmcmillen.contactsproject.databinding.ActivityMainBinding
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var adapter: ContactListAdapter? = null
     private val viewModel: MainViewModel by viewModels()
-    var contactID : Int = 0
+//    var contactID : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,17 +43,25 @@ class MainActivity : AppCompatActivity() {
                 viewModel.insertContact(contact)
                 clearFields()
             } else {
-                binding.errorView.text = "Incomplete information"
+                val toast = Toast.makeText(this, "Please enter name and phone number", Toast.LENGTH_LONG)
+                toast.show()
             }
         }
 
-        binding.findButton.setOnClickListener { viewModel.findContact(
-            binding.contactName.text.toString()) }
+        binding.findButton.setOnClickListener {
+            if (binding.contactName.text.isNotEmpty()) {
+                viewModel.findContact(binding.contactName.text.toString())
+            } else {
+                val toast = Toast.makeText(this, "You must enter name to search", Toast.LENGTH_LONG)
+                toast.show()
+            }
+
+        }
 
         binding.deleteButton.setOnClickListener {
             //REQUIRES TO ENTER NAME INTO "ENTER NAME FIELD", THEN CLICK DELETE BUTTON TWICE TO DELETE THAT RECORD
             viewModel.findContact(binding.contactName.text.toString())
-            viewModel.deleteContact(contactID)
+//            viewModel.deleteContact(contactID)
 //            viewModel.deleteContact(binding.contactName.text.toString())
 
             clearFields()
@@ -61,6 +70,11 @@ class MainActivity : AppCompatActivity() {
         binding.ascButton.setOnClickListener{
             viewModel.sortByAsc()
 //            adapter?.setContactList(viewModel.sortByAsc())
+        }
+
+        binding.descButton.setOnClickListener{
+            viewModel.sortByDesc()
+//            adapter?.setContactList(viewModel.sortByDesc())
         }
     }
 
@@ -73,13 +87,16 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getSearchResults().observe(this) { contacts ->
             contacts?.let {
+
                 if (it.isNotEmpty()) {
-                    binding.contactID.text = String.format(Locale.US, "%d", it[0].id)
-                    contactID = it[0].id
-                    binding.contactName.setText(it[0].contactName)
-                    binding.contactPhone.setText(it[0].contactPhone)
-                } else {
-                    binding.errorView.text = "No Match"
+//                    binding.contactID.text = String.format(Locale.US, "%d", it[0].id)
+//                    contactID = it[0].id
+//                    binding.contactName.setText(it[0].contactName)
+//                    binding.contactPhone.setText(it[0].contactPhone)
+                    adapter?.setContactList(it)
+                } else if (binding.contactName.text.isNotEmpty()) {
+                    val toast = Toast.makeText(this, "There are no contacts that match your search", Toast.LENGTH_LONG)
+                    toast.show()
                 }
             }
         }

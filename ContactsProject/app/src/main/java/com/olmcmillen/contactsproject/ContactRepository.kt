@@ -11,14 +11,14 @@ class ContactRepository(application: Application){
     private var contactDao: ContactDAO?
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
     val allContacts: LiveData<List<Contact>>?
-    val sortedAscContacts: LiveData<List<Contact>>?
+//    val sortedAscContacts: LiveData<List<Contact>>?
 
     init {
         val db: ContactRoomDatabase? =
             ContactRoomDatabase.getDatabase(application)
         contactDao = db?.contactDao()
         allContacts = contactDao?.getAllContacts()
-        sortedAscContacts = contactDao?.sortByAsc()
+//        sortedAscContacts = contactDao?.sortByAsc()
     }
 
     fun insertContact(newcontact: Contact) {
@@ -46,6 +46,26 @@ class ContactRepository(application: Application){
             return@async contactDao?.findContact(name)
         }
 
+    fun sortedAscContacts() {
+        coroutineScope.launch(Dispatchers.Main) {
+            searchResults.value = asyncSortAsc().await()
+        }
+    }
 
+    private fun asyncSortAsc(): Deferred<List<Contact>?> =
+        coroutineScope.async(Dispatchers.IO) {
+            return@async contactDao?.sortedAscContacts()
+        }
+
+    fun sortedDescContacts() {
+        coroutineScope.launch(Dispatchers.Main) {
+            searchResults.value = asyncSortDesc().await()
+        }
+    }
+
+    private fun asyncSortDesc(): Deferred<List<Contact>?> =
+        coroutineScope.async(Dispatchers.IO) {
+            return@async contactDao?.sortedDescContacts()
+        }
 
 }

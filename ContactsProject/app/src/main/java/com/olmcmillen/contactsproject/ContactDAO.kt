@@ -21,6 +21,10 @@ interface ContactDAO {
     fun getAllContacts(): LiveData<List<Contact>>
 
     @Query("SELECT * FROM contacts ORDER BY contactName ASC")
-    fun sortByAsc(): LiveData<List<Contact>>
+    fun sortedAscContacts(): List<Contact>
+
+
+    @Query("SELECT * FROM contacts ORDER BY contactName DESC")
+    fun sortedDescContacts(): List<Contact>
 
 }
