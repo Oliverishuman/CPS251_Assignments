@@ -6,18 +6,23 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.olmcmillen.contactsproject.R.drawable.baseline_delete_24
 
 class ContactListAdapter (private val contactItemLayout: Int) : RecyclerView.Adapter<ContactListAdapter.ViewHolder>(){
 
     private var contactList: List<Contact>? = null
+
     override fun onBindViewHolder(holder: ViewHolder, listPosition: Int) {
         val name = holder.itemName
-        val quantity = holder.itemQuantity
+        val phone = holder.itemPhone
+        var deleteIcon = holder.itemDeleteIcon
 
         contactList.let {
             name.text = it!![listPosition].contactName
-            quantity.text = it!![listPosition].contactPhone
+            phone.text = it!![listPosition].contactPhone
+        }
+
+        deleteIcon.setOnClickListener(){
+
         }
     }
 
@@ -38,9 +43,8 @@ class ContactListAdapter (private val contactItemLayout: Int) : RecyclerView.Ada
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var itemName: TextView = itemView.findViewById(R.id.contact_row_name)
-        var itemQuantity: TextView = itemView.findViewById(R.id.contact_row_quantity)
-
+        var itemName: TextView = itemView.findViewById(R.id.nameView)
+        var itemPhone: TextView = itemView.findViewById(R.id.phoneView)
+        var itemDeleteIcon: ImageView = itemView.findViewById(R.id.deleteIcon)
     }
-
 }

@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.deleteButton.setOnClickListener {
             //REQUIRES TO ENTER NAME INTO "ENTER NAME FIELD", THEN CLICK DELETE BUTTON TWICE TO DELETE THAT RECORD
-            viewModel.findContact(binding.contactName.text.toString())
+//            viewModel.findContact(binding.contactName.text.toString())
 //            viewModel.deleteContact(contactID)
 //            viewModel.deleteContact(binding.contactName.text.toString())
 

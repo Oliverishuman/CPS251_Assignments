@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/contact_row_name"
+            android:id="@+id/nameView"
             android:layout_width="150dp"
             android:layout_height="30dp"
             android:text="TextView"
@@ -27,7 +27,7 @@
             app:layout_constraintVertical_bias="0.133" />
 
         <TextView
-            android:id="@+id/contact_row_quantity"
+            android:id="@+id/phoneView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
