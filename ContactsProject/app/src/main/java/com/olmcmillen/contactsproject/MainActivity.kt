@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
 //                    binding.contactName.setText(it[0].contactName)
 //                    binding.contactPhone.setText(it[0].contactPhone)
                     adapter?.setContactList(it)
-                } else if (binding.contactName.text.isNotEmpty()) {
+                } else {
                     val toast = Toast.makeText(this, "There are no contacts that match your search", Toast.LENGTH_LONG)
                     toast.show()
                 }
