@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clearFields() {
-        binding.contactID.setText("")
         binding.contactName.setText("")
         binding.contactPhone.setText("")
     }
@@ -64,15 +63,6 @@ class MainActivity : AppCompatActivity() {
                 toast.show()
             }
             binding.contactName.requestFocus()
-        }
-
-        binding.deleteButton.setOnClickListener {
-            //REQUIRES TO ENTER NAME INTO "ENTER NAME FIELD", THEN CLICK DELETE BUTTON TWICE TO DELETE THAT RECORD
-//            viewModel.findContact(binding.contactName.text.toString())
-//            viewModel.deleteContact(contactID)
-//            viewModel.deleteContact(binding.contactName.text.toString())
-
-            clearFields()
         }
 
         binding.ascButton.setOnClickListener{
