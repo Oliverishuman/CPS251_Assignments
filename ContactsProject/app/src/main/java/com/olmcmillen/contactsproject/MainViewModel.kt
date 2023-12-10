@@ -25,8 +25,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application){
         repository.findContact(name)
     }
 
-    fun deleteContact(name: Int) {
-        repository.deleteContact(name)
+    fun deleteContact(id: Int) {
+        repository.deleteContact(id)
     }
 
     fun getSearchResults(): MutableLiveData<List<Contact>> {

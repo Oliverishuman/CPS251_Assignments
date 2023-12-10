@@ -2,6 +2,7 @@ package com.olmcmillen.contactsproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import com.olmcmillen.contactsproject.databinding.ActivityMainBinding
@@ -98,10 +99,6 @@ class MainActivity : AppCompatActivity() {
             contacts?.let {
 
                 if (it.isNotEmpty()) {
-//                    binding.contactID.text = String.format(Locale.US, "%d", it[0].id)
-//                    contactID = it[0].id
-//                    binding.contactName.setText(it[0].contactName)
-//                    binding.contactPhone.setText(it[0].contactPhone)
                     adapter?.setContactList(it)
                 } else {
                     val toast = Toast.makeText(this, "There are no contacts that match your search", Toast.LENGTH_LONG)
@@ -115,6 +112,16 @@ class MainActivity : AppCompatActivity() {
         adapter = ContactListAdapter(R.layout.contact_list_item)
         binding.contactRecycler.layoutManager = LinearLayoutManager(this)
         binding.contactRecycler.adapter = adapter
+
+        adapter!!.setListener(object: ContactListAdapter.OnItemClickListener{
+            override fun onClick(string: String) {
+                viewModel.deleteContact(Integer.parseInt(string))
+//                Log.d("MainFragment", "Contact Detected, ID: " + string)
+                val toast = Toast.makeText(applicationContext,
+                    "Contact Detected, ID: $string", Toast.LENGTH_LONG)
+                toast.show()
+            }
+        })
     }
 
 }
