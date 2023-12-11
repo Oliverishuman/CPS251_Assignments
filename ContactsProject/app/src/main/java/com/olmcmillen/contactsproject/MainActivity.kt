@@ -44,11 +44,13 @@ class MainActivity : AppCompatActivity() {
             if (name != "" && quantity != "") {
                 val contact = Contact(name, quantity)
                 viewModel.insertContact(contact)
+                val toast = Toast.makeText(this, contact.contactName + " added ", Toast.LENGTH_SHORT)
+                toast.show()
+                viewModel.getAllContacts()
                 clearFields()
 
             } else {
                 val toast = Toast.makeText(this, "Please enter name and phone number", Toast.LENGTH_LONG)
-
                 toast.show()
             }
             binding.contactName.requestFocus()
@@ -104,11 +106,11 @@ class MainActivity : AppCompatActivity() {
         binding.contactRecycler.adapter = adapter
 
         adapter!!.setListener(object: ContactListAdapter.OnItemClickListener{
-            override fun onClick(string: String) {
+            override fun onClick(string: String, name: String) {
                 viewModel.deleteContact(Integer.parseInt(string))
-//                Log.d("MainFragment", "Contact Detected, ID: " + string)
-                val toast = Toast.makeText(applicationContext, "Contact Detected, ID: $string", Toast.LENGTH_LONG)
+                val toast = Toast.makeText(applicationContext,  name + " deleted", Toast.LENGTH_SHORT)
                 toast.show()
+                viewModel.getAllContacts()
             }
         })
     }

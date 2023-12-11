@@ -19,9 +19,9 @@ class ContactRepository(application: Application){
         allContacts = contactDao?.getAllContacts()
     }
 
-    fun insertContact(newcontact: Contact) {
+    fun insertContact(contact: Contact) {
         coroutineScope.launch(Dispatchers.IO) {
-            asyncInsert(newcontact)
+            asyncInsert(contact)
         } }
     private fun asyncInsert(contact: Contact) {
         contactDao?.insertContact(contact)

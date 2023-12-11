@@ -26,12 +26,12 @@ class ContactListAdapter (private val contactItemLayout: Int) : RecyclerView.Ada
         }
 
         deleteIcon.setOnClickListener(View.OnClickListener{
-            listener?.onClick(id.text.toString())
+            listener?.onClick(id.text.toString(), name.text.toString())
         })
     }
 
     interface OnItemClickListener {
-        fun onClick(string: String){
+        fun onClick(string: String, name: String){
 
         }
     }
