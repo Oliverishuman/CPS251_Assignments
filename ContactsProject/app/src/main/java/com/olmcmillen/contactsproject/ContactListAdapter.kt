@@ -26,14 +26,13 @@ class ContactListAdapter (private val contactItemLayout: Int) : RecyclerView.Ada
         }
 
         deleteIcon.setOnClickListener(View.OnClickListener{
-            Log.d("ContactListAdapter", "deleteButton clicked " + id.text.toString())
             listener?.onClick(id.text.toString())
         })
     }
 
     interface OnItemClickListener {
         fun onClick(string: String){
-            Log.d("ContactListAdapter", "onItemClickListener")
+
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):

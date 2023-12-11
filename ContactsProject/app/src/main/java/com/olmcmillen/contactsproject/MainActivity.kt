@@ -107,8 +107,7 @@ class MainActivity : AppCompatActivity() {
             override fun onClick(string: String) {
                 viewModel.deleteContact(Integer.parseInt(string))
 //                Log.d("MainFragment", "Contact Detected, ID: " + string)
-                val toast = Toast.makeText(applicationContext,
-                    "Contact Detected, ID: $string", Toast.LENGTH_LONG)
+                val toast = Toast.makeText(applicationContext, "Contact Detected, ID: $string", Toast.LENGTH_LONG)
                 toast.show()
             }
         })
