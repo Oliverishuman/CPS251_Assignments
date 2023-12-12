@@ -2,13 +2,11 @@ package com.olmcmillen.contactsproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.EditText
 import android.widget.Toast
 import com.olmcmillen.contactsproject.databinding.ActivityMainBinding
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             if (name != "" && quantity != "") {
                 val contact = Contact(name, quantity)
                 viewModel.insertContact(contact)
-                val toast = Toast.makeText(this, contact.contactName + " added ", Toast.LENGTH_SHORT)
+                val toast = Toast.makeText(this, contact.contactName + " added", Toast.LENGTH_SHORT)
                 toast.show()
                 viewModel.getAllContacts()
                 clearFields()
@@ -108,7 +106,7 @@ class MainActivity : AppCompatActivity() {
         adapter!!.setListener(object: ContactListAdapter.OnItemClickListener{
             override fun onClick(string: String, name: String) {
                 viewModel.deleteContact(Integer.parseInt(string))
-                val toast = Toast.makeText(applicationContext,  name + " deleted", Toast.LENGTH_SHORT)
+                val toast = Toast.makeText(applicationContext, "$name deleted", Toast.LENGTH_SHORT)
                 toast.show()
                 viewModel.getAllContacts()
             }

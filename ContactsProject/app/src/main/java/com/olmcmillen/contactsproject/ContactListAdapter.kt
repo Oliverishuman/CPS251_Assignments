@@ -1,6 +1,6 @@
 package com.olmcmillen.contactsproject
 
-import android.util.Log
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,12 +17,12 @@ class ContactListAdapter (private val contactItemLayout: Int) : RecyclerView.Ada
         val name = holder.itemName
         val phone = holder.itemPhone
         val id = holder.id
-        var deleteIcon = holder.itemDeleteIcon
+        val deleteIcon = holder.itemDeleteIcon
 
         contactList.let {
             name.text = it!![listPosition].contactName
-            phone.text = it!![listPosition].contactPhone
-            id.text = it!![listPosition].id.toString()
+            phone.text = it[listPosition].contactPhone
+            id.text = it[listPosition].id.toString()
         }
 
         deleteIcon.setOnClickListener(View.OnClickListener{
@@ -42,6 +42,7 @@ class ContactListAdapter (private val contactItemLayout: Int) : RecyclerView.Ada
         return ViewHolder(view)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setContactList(contacts: List<Contact>) {
         contactList = contacts
         notifyDataSetChanged()

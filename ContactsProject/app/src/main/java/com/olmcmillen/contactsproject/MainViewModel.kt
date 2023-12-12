@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import java.util.jar.Attributes.Name
+
 
 class MainViewModel(application: Application) : AndroidViewModel(application){
 
